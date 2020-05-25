@@ -22,16 +22,16 @@ console.log(`value: ${text}, type: ${typeof text}`);
 text = '7' / '5';
 console.log(`value: ${text}, type: ${typeof text}`);
 
-// mutable variables : 변동성 변수
+// mutable variables : 변동성 변수 read/write
 let item = 0;
 
-// imutable variable : 불변 변수
+// immutable variable : 불변 변수 read only
 const numWeekdays = 7;
 
 // Types of variables
-// primitive, single item : number, string, boolean, null, undefined, symbol
-// object, box container
-// function, first-class function
+// primitive 타입 - single item : number, string, boolean, null, undefined, symbol
+// object 타입 - box container
+// function 타입 - first-class function
 // 자바스크립트는 function도 타입에 속하며, return(반환) 시. function을 반환할 수 있다.
 
 const count = 17;
