@@ -1,3 +1,4 @@
+"use strict";
 // 1. string concatenation
 console.log("My" + " cat");
 console.log("1" + 2);

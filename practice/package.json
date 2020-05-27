@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "jshint": "^2.11.1"
+    "jshint": "^2.11.1",
+    "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.0.0",

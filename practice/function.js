@@ -1,3 +1,5 @@
+"use strict";
+
 // Function
 // - fundamental building block in the program
 // - subprogram can be used multiple times
@@ -142,3 +144,37 @@ const simpleMutiply = (a, b) => {
 // QUIZ.
 // function calculate(command, a, b)
 // command : add, subtract, divide, multiply, remainder
+const my_add = (a, b) => a + b;
+const my_subtract = (a, b) => a - b;
+const my_divide = (a, b) => a / b;
+const my_multiply = (a, b) => a * b;
+const my_remainder = (a, b) => a % b;
+
+function my_cal(cmd, a, b) {
+  switch (cmd) {
+    case "add":
+      console.log(my_add(a, b));
+      break;
+    case "subtract":
+      console.log(my_subtract(a, b));
+      break;
+    case "divide":
+      console.log(my_divide(a, b));
+      break;
+    case "multiply":
+      console.log(my_multiply(a, b));
+      break;
+    case "remainder":
+      console.log(my_remainder(a, b));
+      break;
+    default:
+      throw Error("unknow command!");
+  }
+}
+
+my_cal("add", 2, 10);
+my_cal("subtract", 2, 10);
+my_cal("divide", 10, 2);
+my_cal("multiply", 2, 10);
+my_cal("remainder", 10, 2);
+my_cal("reminder", 10, 2);
