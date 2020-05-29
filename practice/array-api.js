@@ -1,65 +1,3 @@
-"use strict";
-
-// Array🥕
-// 1. Delcaration
-const arr1 = new Array();
-const arr2 = [1, 2, 3];
-
-// 2. Index Position
-const fruit = ["🍈", "🥝", "🍑"];
-console.log(fruit);
-console.log(fruit.length);
-console.log(fruit[1]);
-console.log(fruit[fruit.length - 1]); // 가장 마지막 아이템 풀력
-
-// 3. Looping over an array
-// print all fruits
-// - for loop 사용(for, for...of, forEach)
-for (const x of fruit) {
-  console.log(x);
-}
-console.clear();
-fruit.forEach(function (value, index, array) {
-  console.log(value, index, array);
-});
-// 위 코드를 아래처럼 Arrow function을 사용하여 단축
-fruit.forEach((value, index, array) => console.log(value, index, array));
-fruit.forEach((value) => console.log(value));
-
-// 4. Addition, Deletion, Copy
-// - push: add an item in the end
-// - unshift: add an item in the beginning
-fruit.push("🍍", "🍎");
-fruit.forEach((value) => console.log(value));
-// - pop: remove an item from the end
-// - shift: remove an item from the beginning
-fruit.pop();
-fruit.forEach((value) => console.log(value));
-
-fruit.unshift("🍎");
-console.log(fruit);
-fruit.shift();
-console.log(fruit);
-// 하지만, shift와 unshift는 push,pop 보다 매우 비효율적이다(느리다)
-
-// - splice: 배열 중 index에 해당하는 item만 삭제하는 함수
-fruit.splice(0, 1, "🍎", "🍍");
-console.log(fruit);
-// - concat: 여러개의 배열을 합쳐주는 함수
-const newFruit = fruit.concat(arr2);
-console.log(newFruit);
-
-// 5. Searching 검색
-// - indexOf : 0번째 인덱스부터 검색
-// - lastIndexOf : 마지막 인덱스부터 검색
-// - includes
-console.clear();
-console.log(fruit);
-console.log(fruit.indexOf("🍍"));
-console.log(fruit.indexOf("this"));
-console.log(fruit.includes("🍍"));
-console.log(fruit.includes("this"));
-
 /*
  **숙제 : 배열 API 코딩을 보고, 각 함수에 대해 공부할 것
  */
@@ -67,7 +5,9 @@ console.clear();
 
 // Q1.make a string out of an array
 const fruits = ["apple", "banana", "orange"];
-fruits.forEach((value) => console.log(value));
+// fruits.forEach((value) => console.log(value));
+const fruits_str = fruits.join("^^");
+console.log(fruits_str);
 
 // Q2. make an array out of a string
 const fruits2 = "🍎, 🥝, 🍌, 🍒";
@@ -80,8 +20,9 @@ console.log(array.reverse());
 console.log(array.reverse());
 
 // Q4. make new array without the first two elements
-array.splice(0, 2);
-console.log(array);
+// array.splice(0, 2); 기존 배열을 수정
+const new_arr1 = array.slice(2, 4 + 1); // 새로운 배열을 만듦
+console.log(new_arr1);
 // ========================================== //
 class Student {
   constructor(name, age, enrolled, score) {
@@ -105,8 +46,22 @@ students.forEach(function (each) {
     console.log(each.name);
   }
 });
+{
+  const result = students.find(function (student) {
+    return student.score === 90; // true 리턴 후 그 학생 오브젝트를 리턴
+  });
+  console.log(result);
+}
+{
+  const result = students.find((student) => student.score === 90);
+  console.log(result);
+}
 
 // Q6. make an array of enrolled students
+{
+  const result = students.filter((student) => student.enrolled);
+  console.log(result);
+}
 const enrolled = [];
 students.forEach(function (each) {
   if (each.enrolled) {
@@ -117,6 +72,10 @@ console.log(enrolled);
 
 // Q7. make an array containing only the students' scores
 // result should be: [45, 80, 90, 66, 88]
+{
+  const result = students.map((student) => student.score);
+  console.log(result);
+}
 const score = [];
 students.forEach(function (each) {
   score.push(each.score);
@@ -124,7 +83,11 @@ students.forEach(function (each) {
 console.log(score);
 
 // Q8. check if there is a student with the score lower than 50
-
+{
+  const result = students.some((student) => student.score <= 50);
+  console.log(result);
+  // boolean을 리턴한다
+}
 students.forEach(function (each) {
   if (each.score <= 50) {
     console.log(`${each.name}'s score is lower than 50.`);
@@ -132,6 +95,11 @@ students.forEach(function (each) {
 });
 
 // Q9. compute students' average score
+{
+  const result = students.reduce((prev, curr) => prev + curr.score, 0);
+  console.log(result / students.length);
+}
+
 let total_score = 0;
 students.forEach(function (each) {
   total_score += each.score;
@@ -141,9 +109,22 @@ console.log(avg_score);
 
 // Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
-console.log(score.toString());
-console.log(score);
+{
+  const result = students
+    .map((student) => student.score)
+    .filter((score) => score >= 50)
+    .join();
+  console.log(result);
+}
+// console.log(score.toString());
+// console.log(score);
 
 // Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
-console.log(score.sort().toString());
+{
+  const result = students
+    .map((student) => student.score)
+    .sort((a, b) => a - b)
+    .join();
+  console.log(result);
+}
